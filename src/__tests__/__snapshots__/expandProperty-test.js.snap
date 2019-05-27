@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expanding property values should expand correctly 1`] = `
+Object {
+  "paddingBottom": "5px",
+  "paddingLeft": "20px",
+  "paddingRight": "20px",
+  "paddingTop": "15px",
+}
+`;
