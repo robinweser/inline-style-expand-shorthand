@@ -69,9 +69,11 @@ const output = {
 ### expand
 
 This is just a convenient wrapper for objects that uses `expandProperty` under the hood.
+
 | Parameter  | Description  |
 | ---------- | ----------------------------------------------------------- |
 | style | A (nested) style objects that contains shorthand properties |
+
 
 ```js
 import { expand } from 'inline-style-expand-shorthand'
