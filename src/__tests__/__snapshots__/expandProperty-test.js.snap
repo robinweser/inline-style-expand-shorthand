@@ -1,10 +1,296 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Expanding property values should expand correctly 1`] = `
+exports[`Expanding property values should expand borders correctly 1`] = `
+Object {
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders correctly 2`] = `
+Object {
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders correctly 3`] = `
+Object {
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders correctly 4`] = `
+Object {
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders correctly 5`] = `
+Object {
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders correctly 6`] = `
+Object {
+  "borderBottomWidth": "3px",
+  "borderLeftWidth": "2px",
+  "borderRightWidth": "5px",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders correctly 7`] = `
+Object {
+  "borderBottomWidth": "3px",
+  "borderLeftWidth": "5px",
+  "borderRightWidth": "5px",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 1`] = `
+Object {
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 2`] = `
+Object {
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 3`] = `
+Object {
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 4`] = `
+Object {
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 5`] = `
+Object {
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 6`] = `
+Object {
+  "borderBottomWidth": "3px",
+  "borderLeftWidth": "2px",
+  "borderRightWidth": "5px",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 7`] = `
+Object {
+  "borderBottomWidth": "3px",
+  "borderLeftWidth": "5px",
+  "borderRightWidth": "5px",
+  "borderTopWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand borders/outline correctly 8`] = `
+Object {
+  "outlineColor": "grey",
+  "outlineStyle": "solid",
+  "outlineWidth": "1px",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 1`] = `
+Object {
+  "flexBasis": "auto",
+  "flexGrow": "0",
+  "flexShrink": "1",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 2`] = `
+Object {
+  "flexBasis": "50%",
+  "flexGrow": "2",
+  "flexShrink": "1",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 3`] = `
+Object {
+  "flexBasis": "20px",
+  "flexGrow": "3",
+  "flexShrink": "1",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 4`] = `
+Object {
+  "flexBasis": "20px",
+  "flexGrow": "3",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 5`] = `
+Object {
+  "flexBasis": "20px",
+  "flexGrow": "1",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 6`] = `
+Object {
+  "flexBasis": "20px",
+  "flexGrow": "1",
+  "flexShrink": "0",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 7`] = `
+Object {
+  "flexBasis": "20px",
+  "flexGrow": "1",
+  "flexShrink": "0",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 1`] = `
+Object {
+  "paddingBottom": "5px",
+  "paddingLeft": "10px",
+  "paddingRight": "20px",
+  "paddingTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 2`] = `
 Object {
   "paddingBottom": "5px",
   "paddingLeft": "20px",
   "paddingRight": "20px",
   "paddingTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 3`] = `
+Object {
+  "paddingBottom": "15px",
+  "paddingLeft": "20px",
+  "paddingRight": "20px",
+  "paddingTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 4`] = `
+Object {
+  "paddingBottom": "15px",
+  "paddingLeft": "15px",
+  "paddingRight": "15px",
+  "paddingTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 5`] = `
+Object {
+  "paddingBottom": "0",
+  "paddingLeft": "0",
+  "paddingRight": "0",
+  "paddingTop": "0",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 6`] = `
+Object {
+  "paddingBottom": "0",
+  "paddingLeft": "0",
+  "paddingRight": "0",
+  "paddingTop": "0",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 7`] = `
+Object {
+  "marginBottom": "5px",
+  "marginLeft": "10px",
+  "marginRight": "20px",
+  "marginTop": "15px",
 }
 `;

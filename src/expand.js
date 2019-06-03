@@ -5,14 +5,14 @@ export default function expand(style) {
     const value = style[property]
 
     if (typeof value === 'string' || typeof value === 'number') {
-      const expansion = expandShorthand(property, value)
+      const expansion = expandProperty(property, value)
 
       if (expansion) {
         Object.assign(style, expansion)
         delete style[property]
       }
     } else if (typeof value === 'object' && !Array.isArray(value)) {
-      shorthandExpandPlugin(value)
+      expand(value)
     }
   }
 

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expanding style objects should expand properties in nested objects 1`] = `
+Object {
+  ":hover": Object {
+    "borderBottomWidth": "3px",
+    "borderLeftWidth": "4px",
+    "borderRightWidth": "2px",
+    "borderTopWidth": "5px",
+    "height": 100,
+    "marginBottom": "5px",
+    "marginLeft": "5px",
+    "marginRight": "5px",
+    "marginTop": "5px",
+  },
+  "borderBottomColor": "grey",
+  "borderBottomStyle": "solid",
+  "borderBottomWidth": "1px",
+  "borderLeftColor": "grey",
+  "borderLeftStyle": "solid",
+  "borderLeftWidth": "1px",
+  "borderRightColor": "grey",
+  "borderRightStyle": "solid",
+  "borderRightWidth": "1px",
+  "borderTopColor": "grey",
+  "borderTopStyle": "solid",
+  "borderTopWidth": "1px",
+  "paddingBottom": "20px",
+  "paddingLeft": "10px",
+  "paddingRight": "10px",
+  "paddingTop": "20px",
+  "width": 200,
+}
+`;

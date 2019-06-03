@@ -1,101 +1,101 @@
-const WHITESPACE_NO_CALC = /\s+(?=[^)]*?(?:\(|$))/g;
-const LENGTH_UNIT = /(em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i;
+const WHITESPACE_NO_CALC = /\s+(?=[^)]*?(?:\(|$))/g
+const LENGTH_UNIT = /(em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
 
-const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i;
-const BORDER_WIDTH = /^(thick|medium|think)$/i;
+const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i
+const BORDER_WIDTH = /^(thick|medium|think)$/i
 
 function parseBorder(value, resolve) {
-  const values = value.split(WHITESPACE_NO_CALC);
+  const values = value.split(WHITESPACE_NO_CALC)
 
-  const longhands = {};
+  const longhands = {}
 
   values.forEach(val => {
     if (val.match(BORDER_STYLE) !== null) {
-      longhands[resolve("Style")] = val;
+      longhands[resolve('Style')] = val
     } else if (
       val.match(BORDER_WIDTH) !== null ||
       val.match(LENGTH_UNIT) !== null
     ) {
-      longhands[resolve("Width")] = val;
+      longhands[resolve('Width')] = val
     } else {
-      longhands[resolve("Color")] = val;
+      longhands[resolve('Color')] = val
     }
-  });
+  })
 
-  return longhands;
+  return longhands
 }
 
 function parseCircular(value, resolve) {
   const [Top, Right = Top, Bottom = Top, Left = Right] = value.split(
     WHITESPACE_NO_CALC
-  );
+  )
 
   return {
-    [resolve("Top")]: Top,
-    [resolve("Right")]: Right,
-    [resolve("Bottom")]: Bottom,
-    [resolve("Left")]: Left
-  };
+    [resolve('Top')]: Top,
+    [resolve('Right')]: Right,
+    [resolve('Bottom')]: Bottom,
+    [resolve('Left')]: Left,
+  }
 }
 
 var circularExpand = {
-  borderWidth: key => "border" + key + "Width",
-  borderColor: key => "border" + key + "Color",
-  borderStyle: key => "border" + key + "Style",
-  padding: key => "padding" + key,
-  margin: key => "margin" + key
-};
+  borderWidth: key => 'border' + key + 'Width',
+  borderColor: key => 'border' + key + 'Color',
+  borderStyle: key => 'border' + key + 'Style',
+  padding: key => 'padding' + key,
+  margin: key => 'margin' + key,
+}
 
 var borderExpand = {
-  borderLeft: key => "borderLeft" + key,
-  borderTop: key => "borderTop" + key,
-  borderRight: key => "borderRight" + key,
-  borderBottom: key => "borderBottom" + key,
-  outline: key => "outline" + key
-};
+  borderLeft: key => 'borderLeft' + key,
+  borderTop: key => 'borderTop' + key,
+  borderRight: key => 'borderRight' + key,
+  borderBottom: key => 'borderBottom' + key,
+  outline: key => 'outline' + key,
+}
 
 function parseFlex(value) {
-  const values = value.split(WHITESPACE_NO_CALC);
+  const values = value.split(WHITESPACE_NO_CALC)
 
-  const longhands = {};
+  const longhands = {}
 
   values.forEach(val => {
-    if (val.match(LENGHT_UNIT) !== null) {
-      longhands.flexBasis = val;
+    if (val.match(LENGTH_UNIT) !== null) {
+      longhands.flexBasis = val
     } else {
       if (longhands.flexGrow) {
-        longhands.flexShrink = val;
+        longhands.flexShrink = val
+      } else {
+        longhands.flexGrow = val
       }
-
-      longhands.flexGrow = val;
     }
-  });
+  })
 
-  return longhands;
+  return longhands
 }
 
 export default function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
-  if (property === "border") {
-    const longhands = parseBorder(value);
+  if (property === 'border') {
+    const longhands = parseBorder(value.toString(), key => 'border' + key)
 
-    var result = {};
+    var result = {}
     for (let property in longhands) {
-      Object.assign(result, expand("border" + property, longhands[property]));
+      Object.assign(result, expandProperty(property, longhands[property]))
     }
 
-    return result;
+    return result
   }
 
-  if (property === "flex") {
-    return parseFlex(value);
+  if (property === 'flex') {
+    return parseFlex(value.toString())
   }
 
   if (circularExpand[property]) {
-    return parseCircular(value, circularExpand[property]);
+    return parseCircular(value.toString(), circularExpand[property])
   }
 
   if (borderExpand[property]) {
-    return parseBorder(value, borderExpand[property]);
+    return parseBorder(value.toString(), borderExpand[property])
   }
 }
