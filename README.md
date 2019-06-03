@@ -24,6 +24,23 @@ As this library runs on the browser as well, it needs to be very small and perfo
 
 This also comes with some downsides: We make a lot of consumptions about the CSS value. All in all, **it must be a valid CSS value**. Otherwise one might experience strange behaviour.
 
+## Supported Properties
+
+- border
+- borderTop
+- borderRight
+- borderBottom
+- borderLeft
+- borderWidth
+- borderStyle
+- borderColor
+- padding
+- margin
+- outline
+- flex
+
+> Need more? Feel free to [create an issue](https://github.com/rofrischmann/inline-style-expand-shorthand/issues/new) with a proposal!
+
 ## Usage
 
 This package exports 2 methods, one to expand single properties and one to expand properties on full style objects.
