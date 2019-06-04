@@ -2,7 +2,7 @@
 
 Expanding shorthand properties in JavaScript style objects.
 
-<img alt="TravisCI" src="https://travis-ci.org/rofrischmann/inline-style-expand-shorthand.svg?branch=master"> <img alt="Test Coverage"  src="https://api.codeclimate.com/v1/badges/2964ee833f8d2104cac6/test_coverage" /> <img alt="npm downloads" src="https://img.shields.io/npm/dm/inline-style-expand-shorthand.svg"> <img alt="npm version" src="https://badge.fury.io/js/inline-style-expand-shorthand.svg"> <img alt="gzipped size" src="https://img.shields.io/bundlephobia/minzip/inline-style-expand-shorthand.svg?colorB=4c1&label=gzipped%20size">
+<img alt="npm downloads" src="https://img.shields.io/npm/dm/inline-style-expand-shorthand.svg"> <img alt="npm version" src="https://badge.fury.io/js/inline-style-expand-shorthand.svg"> <img alt="gzipped size" src="https://img.shields.io/bundlephobia/minzip/inline-style-expand-shorthand.svg?colorB=4c1&label=gzipped%20size">
 
 ## Installation
 
@@ -43,7 +43,7 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 
 ## Usage
 
-This package exports 2 methods, one to expand single properties and one to expand properties on full style objects.
+This package exports 3 methods, one to expand single properties and two to expand properties on full style objects.
 
 ### expandProperty
 
@@ -93,6 +93,36 @@ const output = {
   borderLeftWidth: '1px',
   borderLeftStyle: 'solid',
   borderLeftColor: 'black',
+}
+```
+
+### expandWithMerge
+
+This one is similar to `expand` except that it also merges mixed longhand and shorthand properties.
+
+> **Warning**: Beware that there are different border properties with the same specificity. In order to solve that deterministically, we had to choose a order. `borderWidth`, `borderStyle` and `borderColor` will always overwrite `borderLeft`, `borderRight`, `borderTop` and `borderBottom`.
+
+| Parameter  | Description                                                 |
+| ---------- | ----------------------------------------------------------- |
+| style      | A (nested) style objects that contains shorthand properties |
+
+```js
+import { expand } from 'inline-style-expand-shorthand'
+
+const style = {
+  padding: '10px 20px',
+  paddingLeft: '15px',
+}
+
+const expanded = expand(style)
+
+// expanded === output
+const output = {
+  paddingTop: '10px',
+  paddingRight: '20px',
+  paddingBottom: '10px',
+  // overwrites the expanded padding-left value due to it being more specific
+  paddingLeft: '15px',
 }
 ```
 
