@@ -1,5 +1,5 @@
 const WHITESPACE_NO_CALC = /\s+(?=[^)]*?(?:\(|$))/g
-const LENGTH_UNIT = /(em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
+const LENGTH_UNIT = /(calc\(|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
 
 const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i
 const BORDER_WIDTH = /^(thick|medium|think)$/i
@@ -14,7 +14,8 @@ function parseBorder(value, resolve) {
       longhands[resolve('Style')] = val
     } else if (
       val.match(BORDER_WIDTH) !== null ||
-      val.match(LENGTH_UNIT) !== null
+      val.match(LENGTH_UNIT) !== null ||
+      val === '0'
     ) {
       longhands[resolve('Width')] = val
     } else {

@@ -9,6 +9,9 @@ describe('Expanding property values', () => {
     expect(expandProperty('padding', 0)).toMatchSnapshot()
     expect(expandProperty('padding', '0')).toMatchSnapshot()
     expect(expandProperty('margin', '15px 20px 5px 10px')).toMatchSnapshot()
+    expect(
+      expandProperty('padding', 'calc(20px - 15px) 10px calc(100% - 5px)')
+    ).toMatchSnapshot()
   })
 
   it('should expand flex correctly', () => {
@@ -30,5 +33,6 @@ describe('Expanding property values', () => {
     expect(expandProperty('borderWidth', '1px 5px 3px 2px')).toMatchSnapshot()
     expect(expandProperty('borderWidth', '1px 5px 3px')).toMatchSnapshot()
     expect(expandProperty('outline', '1px solid grey')).toMatchSnapshot()
+    expect(expandProperty('borderLeft', 0)).toMatchSnapshot()
   })
 })

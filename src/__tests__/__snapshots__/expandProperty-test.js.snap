@@ -93,6 +93,12 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand borders/outline correctly 9`] = `
+Object {
+  "borderLeftWidth": "0",
+}
+`;
+
 exports[`Expanding property values should expand flex correctly 1`] = `
 Object {
   "flexBasis": "auto",
@@ -207,5 +213,14 @@ Object {
   "marginLeft": "10px",
   "marginRight": "20px",
   "marginTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 8`] = `
+Object {
+  "paddingBottom": "calc(100% - 5px)",
+  "paddingLeft": "10px",
+  "paddingRight": "10px",
+  "paddingTop": "calc(20px - 15px)",
 }
 `;
