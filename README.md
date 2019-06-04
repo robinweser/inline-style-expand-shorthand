@@ -107,14 +107,14 @@ This one is similar to `expand` except that it also merges mixed longhand and sh
 | style      | A (nested) style objects that contains shorthand properties |
 
 ```js
-import { expand } from 'inline-style-expand-shorthand'
+import { expandWithMerge } from 'inline-style-expand-shorthand'
 
 const style = {
   padding: '10px 20px',
   paddingLeft: '15px',
 }
 
-const expanded = expand(style)
+const expanded = expandWithMerge(style)
 
 // expanded === output
 const output = {
