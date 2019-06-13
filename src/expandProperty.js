@@ -1,25 +1,40 @@
-const WHITESPACE_NO_CALC = /\s+(?=[^)]*?(?:\(|$))/g
-const LENGTH_UNIT = /(calc\(|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
+const WHITESPACE_NO_PARENS = /\s+(?=[^)]*?(?:\(|$))/g
+const LENGTH_UNIT = /(em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
+const EDGE_CASES = /^(calc\(|var--)/i
+const CUSTOM_PROPERTIES = /var\((--[\w-]+)\)/g
 
 const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i
 const BORDER_WIDTH = /^(thick|medium|think)$/i
 
-function parseBorder(value, resolve) {
-  const values = value.split(WHITESPACE_NO_CALC)
+// Replace `var(--foo)` with `var--foo` to remove the nested parens issues
+function removeCustomProperties(value) {
+  if (value.indexOf('var(') === -1) return value
+  return value.replace(CUSTOM_PROPERTIES, (match, $1) => `var${$1}`)
+}
 
+// Replace `var--foo` with `var(--foo)` to restore original custom properties
+function restoreCustomProperties(value) {
+  if (value.indexOf('--') === -1) return value
+  return value.replace(/var(--[\w-]+)/g, (match, $1) => `var(${$1})`)
+}
+
+function parseBorder(value, resolve) {
+  const valueWithoutVar = removeCustomProperties(value)
+  const values = valueWithoutVar.split(WHITESPACE_NO_PARENS)
   const longhands = {}
 
   values.forEach(val => {
     if (val.match(BORDER_STYLE) !== null) {
-      longhands[resolve('Style')] = val
+      longhands[resolve('Style')] = restoreCustomProperties(val)
     } else if (
       val.match(BORDER_WIDTH) !== null ||
       val.match(LENGTH_UNIT) !== null ||
+      val.match(EDGE_CASES) !== null ||
       val === '0'
     ) {
-      longhands[resolve('Width')] = val
+      longhands[resolve('Width')] = restoreCustomProperties(val)
     } else {
-      longhands[resolve('Color')] = val
+      longhands[resolve('Color')] = restoreCustomProperties(val)
     }
   })
 
@@ -27,15 +42,16 @@ function parseBorder(value, resolve) {
 }
 
 function parseCircular(value, resolve) {
-  const [Top, Right = Top, Bottom = Top, Left = Right] = value.split(
-    WHITESPACE_NO_CALC
+  const valueWithoutVar = removeCustomProperties(value)
+  const [Top, Right = Top, Bottom = Top, Left = Right] = valueWithoutVar.split(
+    WHITESPACE_NO_PARENS
   )
 
   return {
-    [resolve('Top')]: Top,
-    [resolve('Right')]: Right,
-    [resolve('Bottom')]: Bottom,
-    [resolve('Left')]: Left,
+    [resolve('Top')]: restoreCustomProperties(Top),
+    [resolve('Right')]: restoreCustomProperties(Right),
+    [resolve('Bottom')]: restoreCustomProperties(Bottom),
+    [resolve('Left')]: restoreCustomProperties(Left),
   }
 }
 
@@ -56,18 +72,18 @@ var borderExpand = {
 }
 
 function parseFlex(value) {
-  const values = value.split(WHITESPACE_NO_CALC)
-
+  const valueWithoutVar = removeCustomProperties(value)
+  const values = valueWithoutVar.split(WHITESPACE_NO_PARENS)
   const longhands = {}
 
   values.forEach(val => {
-    if (val.match(LENGTH_UNIT) !== null) {
-      longhands.flexBasis = val
+    if (val.match(LENGTH_UNIT) !== null || val.match(EDGE_CASES) !== null) {
+      longhands.flexBasis = restoreCustomProperties(val)
     } else {
       if (longhands.flexGrow) {
-        longhands.flexShrink = val
+        longhands.flexShrink = restoreCustomProperties(val)
       } else {
-        longhands.flexGrow = val
+        longhands.flexGrow = restoreCustomProperties(val)
       }
     }
   })
