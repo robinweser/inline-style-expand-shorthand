@@ -1,12 +1,40 @@
-const WHITESPACE_NO_CALC = /\s+(?=[^)]*?(?:\(|$))/g
-const LENGTH_UNIT = /(calc\(|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
-
+const LENGTH_UNIT = /(em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc|px|dpi|dpcm|dppx|%|auto)$/i
+const CALC = /^(calc\()/i
+const VAR = /^(var\()/i
 const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i
 const BORDER_WIDTH = /^(thick|medium|think)$/i
 
-function parseBorder(value, resolve) {
-  const values = value.split(WHITESPACE_NO_CALC)
+function splitShorthand(value) {
+  let values = ['']
+  let openParensCount = 0
 
+  const trimmedValue = value.trim()
+
+  for (let index = 0; index < trimmedValue.length; index += 1) {
+    if (trimmedValue.charAt(index) === ' ' && openParensCount === 0) {
+      // Add new value
+      values.push('')
+    } else {
+      // Add the current character to the current value
+      values[values.length - 1] =
+        values[values.length - 1] + trimmedValue.charAt(index)
+    }
+
+    // Keep track of the number of parentheses that are yet to be closed.
+    // This is done to avoid splitting at whitespaces within CSS functions.
+    // E.g.: `calc(1px + 1em)`
+    if (trimmedValue.charAt(index) === '(') {
+      openParensCount++
+    } else if (trimmedValue.charAt(index) === ')') {
+      openParensCount--
+    }
+  }
+
+  return values
+}
+
+function parseBorder(value, resolve) {
+  const values = splitShorthand(value)
   const longhands = {}
 
   values.forEach(val => {
@@ -15,6 +43,7 @@ function parseBorder(value, resolve) {
     } else if (
       val.match(BORDER_WIDTH) !== null ||
       val.match(LENGTH_UNIT) !== null ||
+      val.match(CALC) !== null ||
       val === '0'
     ) {
       longhands[resolve('Width')] = val
@@ -27,9 +56,7 @@ function parseBorder(value, resolve) {
 }
 
 function parseCircular(value, resolve) {
-  const [Top, Right = Top, Bottom = Top, Left = Right] = value.split(
-    WHITESPACE_NO_CALC
-  )
+  const [Top, Right = Top, Bottom = Top, Left = Right] = splitShorthand(value)
 
   return {
     [resolve('Top')]: Top,
@@ -56,12 +83,15 @@ var borderExpand = {
 }
 
 function parseFlex(value) {
-  const values = value.split(WHITESPACE_NO_CALC)
-
+  const values = splitShorthand(value)
   const longhands = {}
 
   values.forEach(val => {
-    if (val.match(LENGTH_UNIT) !== null) {
+    if (
+      val.match(LENGTH_UNIT) !== null ||
+      val.match(CALC) !== null ||
+      val.match(VAR) !== null
+    ) {
       longhands.flexBasis = val
     } else {
       if (longhands.flexGrow) {
