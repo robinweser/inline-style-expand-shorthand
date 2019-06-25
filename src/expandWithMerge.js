@@ -41,8 +41,12 @@ export default function expandWithMerge(style) {
         Object.assign(style, mergeBase(expansion, style))
         delete style[property]
       }
-    } else if (typeof value === 'object' && !Array.isArray(value)) {
-      expandWithMerge(value)
+    } else if (typeof value === 'object') {
+      if (Array.isArray(value)) {
+        value.map(expandWithMerge)
+      } else {
+        expandWithMerge(value)
+      }
     }
   }
 

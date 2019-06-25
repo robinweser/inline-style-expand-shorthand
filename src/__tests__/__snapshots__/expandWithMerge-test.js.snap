@@ -48,3 +48,26 @@ Object {
   "paddingTop": "20px",
 }
 `;
+
+exports[`Expanding (with merge) style objects should expand values in arrays 1`] = `
+Object {
+  "extend": Array [
+    Object {
+      "paddingBottom": "10px",
+      "paddingLeft": "10px",
+      "paddingRight": "10px",
+      "paddingTop": "10px",
+    },
+    Object {
+      "marginBottom": "0",
+      "marginLeft": "0",
+      "marginRight": "0",
+      "marginTop": "0",
+    },
+  ],
+  "numeralArray": Array [
+    1,
+    2,
+  ],
+}
+`;
