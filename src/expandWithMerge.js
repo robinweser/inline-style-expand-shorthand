@@ -2,7 +2,7 @@ import expandProperty from './expandProperty'
 
 function mergeBase(longhands, base) {
   for (const property in longhands) {
-    if (base[property]) {
+    if (base.hasOwnProperty(property)) {
       longhands[property] = base[property]
     }
   }
@@ -41,6 +41,8 @@ export default function expandWithMerge(style) {
         Object.assign(style, mergeBase(expansion, style))
         delete style[property]
       }
+    } else if (value === null) {
+      // should skip
     } else if (typeof value === 'object' && !Array.isArray(value)) {
       expandWithMerge(value)
     }

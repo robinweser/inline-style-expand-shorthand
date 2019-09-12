@@ -14,6 +14,17 @@ describe('Expanding (with merge) style objects', () => {
     ).toMatchSnapshot()
   })
 
+  it('should expand and merge properties with non-undefined values', () => {
+    expect(
+      expandWithMerge({
+        padding: '20px 10px',
+        paddingBottom: 0,
+        paddingLeft: null,
+        paddingRight: undefined,
+      })
+    ).toMatchSnapshot()
+  })
+
   it('should expand and merge border properties in nested objects', () => {
     expect(
       expandWithMerge({
