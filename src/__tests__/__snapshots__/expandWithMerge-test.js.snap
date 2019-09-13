@@ -71,3 +71,12 @@ Object {
   ],
 }
 `;
+
+exports[`Expanding (with merge) style objects should expand and merge properties with non-undefined values 1`] = `
+Object {
+  "paddingBottom": 0,
+  "paddingLeft": null,
+  "paddingRight": undefined,
+  "paddingTop": "20px",
+}
+`;
