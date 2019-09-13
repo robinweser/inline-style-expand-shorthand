@@ -15,4 +15,20 @@ describe('Expanding style objects', () => {
       })
     ).toMatchSnapshot()
   })
+
+  it('should expand values in arrays', () => {
+    expect(
+      expand({
+        numeralArray: [1, 2],
+        extend: [
+          {
+            padding: '10px',
+          },
+          {
+            margin: 0,
+          },
+        ],
+      })
+    ).toMatchSnapshot()
+  })
 })

@@ -43,8 +43,12 @@ export default function expandWithMerge(style) {
       }
     } else if (value === null) {
       // should skip
-    } else if (typeof value === 'object' && !Array.isArray(value)) {
-      expandWithMerge(value)
+    } else if (typeof value === 'object') {
+      if (Array.isArray(value)) {
+        value.map(expandWithMerge)
+      } else {
+        expandWithMerge(value)
+      }
     }
   }
 
