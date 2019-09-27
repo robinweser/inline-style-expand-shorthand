@@ -48,10 +48,38 @@ Object {
       "marginRight": "0",
       "marginTop": "0",
     },
+    Object {
+      "outlineColor": Array [
+        "red",
+      ],
+      "outlineStyle": Array [
+        "solid",
+      ],
+      "outlineWidth": Array [
+        "0",
+        "10px",
+      ],
+    },
   ],
   "numeralArray": Array [
     1,
     2,
+  ],
+  "paddingBottom": Array [
+    "1",
+    "20px",
+  ],
+  "paddingLeft": Array [
+    "1",
+    "20px",
+  ],
+  "paddingRight": Array [
+    "1",
+    "20px",
+  ],
+  "paddingTop": Array [
+    "1",
+    "20px",
   ],
 }
 `;

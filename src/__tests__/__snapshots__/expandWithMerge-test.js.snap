@@ -49,6 +49,15 @@ Object {
 }
 `;
 
+exports[`Expanding (with merge) style objects should expand and merge properties with non-undefined values 1`] = `
+Object {
+  "paddingBottom": 0,
+  "paddingLeft": null,
+  "paddingRight": undefined,
+  "paddingTop": "20px",
+}
+`;
+
 exports[`Expanding (with merge) style objects should expand values in arrays 1`] = `
 Object {
   "extend": Array [
@@ -64,19 +73,36 @@ Object {
       "marginRight": "0",
       "marginTop": "0",
     },
+    Object {
+      "outlineColor": "green",
+      "outlineStyle": Array [
+        "solid",
+      ],
+      "outlineWidth": Array [
+        "0",
+        "10px",
+      ],
+    },
   ],
   "numeralArray": Array [
     1,
     2,
   ],
-}
-`;
-
-exports[`Expanding (with merge) style objects should expand and merge properties with non-undefined values 1`] = `
-Object {
-  "paddingBottom": 0,
-  "paddingLeft": null,
-  "paddingRight": undefined,
-  "paddingTop": "20px",
+  "paddingBottom": Array [
+    "1",
+    "20px",
+  ],
+  "paddingLeft": Array [
+    "1",
+    "20px",
+  ],
+  "paddingRight": Array [
+    "1",
+    "20px",
+  ],
+  "paddingTop": Array [
+    "1",
+    "20px",
+  ],
 }
 `;
