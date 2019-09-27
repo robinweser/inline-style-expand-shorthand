@@ -105,7 +105,7 @@ function parseFlex(value) {
   return longhands
 }
 
-export default function expandProperty(property, value) {
+function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
     const longhands = parseBorder(value.toString(), key => 'border' + key)
@@ -129,4 +129,29 @@ export default function expandProperty(property, value) {
   if (borderExpand[property]) {
     return parseBorder(value.toString(), borderExpand[property])
   }
+}
+
+export default function preExpand(property, value) {
+  if (Array.isArray(value)) {
+    const result = {}
+
+    value.forEach(item => {
+      const itemResult = expandProperty(property, item)
+
+      if (itemResult) {
+        Object.keys(itemResult).forEach(itemProperty => {
+          result[itemProperty] = result[itemProperty] || []
+          result[itemProperty].push(itemResult[itemProperty])
+        })
+      }
+    })
+
+    if (Object.keys(result).length) {
+      return result
+    }
+
+    return null
+  }
+
+  return expandProperty(property, value)
 }

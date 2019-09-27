@@ -55,3 +55,10 @@ Object {
   ],
 }
 `;
+
+exports[`Expanding style objects should not throw on undefined values 1`] = `
+Object {
+  "border": undefined,
+  "padding": null,
+}
+`;
