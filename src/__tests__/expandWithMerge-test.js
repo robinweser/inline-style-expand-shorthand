@@ -14,22 +14,20 @@ describe('Expanding (with merge) style objects', () => {
     ).toMatchSnapshot()
   })
 
-
   it('should expand values in arrays', () => {
     expect(
       expandWithMerge({
         numeralArray: [1, 2],
+        padding: [1, '20px'],
         extend: [
-          {
-            padding: '10px',
-          },
-          {
-            margin: 0,
-          },
+          { padding: '10px' },
+          { margin: 0 },
+          { outline: [0, '10px solid red'], outlineColor: 'green' },
         ],
       })
     ).toMatchSnapshot()
-    
+  })
+
   it('should expand and merge properties with non-undefined values', () => {
     expect(
       expandWithMerge({

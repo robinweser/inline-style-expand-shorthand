@@ -11,12 +11,21 @@ export default function expand(style) {
         Object.assign(style, expansion)
         delete style[property]
       }
-    } else if (typeof value === 'object') {
-      if (Array.isArray(value)) {
+    } else if (value === null) {
+      // should skip
+    } else if (Array.isArray(value)) {
+      if (property === 'extend') {
         value.map(expand)
       } else {
-        expand(value)
+        const expansion = expandProperty(property, value)
+
+        if (expansion) {
+          Object.assign(style, expansion)
+          delete style[property]
+        }
       }
+    } else if (typeof value === 'object') {
+      expand(value)
     }
   }
 

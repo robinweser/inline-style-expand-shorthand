@@ -43,12 +43,19 @@ export default function expandWithMerge(style) {
       }
     } else if (value === null) {
       // should skip
-    } else if (typeof value === 'object') {
-      if (Array.isArray(value)) {
+    } else if (Array.isArray(value)) {
+      if (property === 'extend') {
         value.map(expandWithMerge)
       } else {
-        expandWithMerge(value)
+        const expansion = expandProperty(property, value)
+
+        if (expansion) {
+          Object.assign(style, mergeBase(expansion, style))
+          delete style[property]
+        }
       }
+    } else if (typeof value === 'object') {
+      expandWithMerge(value)
     }
   }
 

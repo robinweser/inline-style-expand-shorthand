@@ -16,17 +16,24 @@ describe('Expanding style objects', () => {
     ).toMatchSnapshot()
   })
 
+  it('should not throw on undefined values', () => {
+    expect(
+      expand({
+        border: undefined,
+        padding: null,
+      })
+    ).toMatchSnapshot()
+  })
+
   it('should expand values in arrays', () => {
     expect(
       expand({
         numeralArray: [1, 2],
+        padding: [1, '20px'],
         extend: [
-          {
-            padding: '10px',
-          },
-          {
-            margin: 0,
-          },
+          { padding: '10px' },
+          { margin: 0 },
+          { outline: [0, '10px solid red'] },
         ],
       })
     ).toMatchSnapshot()
