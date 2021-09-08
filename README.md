@@ -34,6 +34,7 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 - borderWidth
 - borderStyle
 - borderColor
+- borderRadius
 - padding
 - margin
 - outline
