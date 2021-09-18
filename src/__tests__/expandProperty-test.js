@@ -86,4 +86,24 @@ describe('Expanding property values', () => {
       expandProperty('borderLeft', 'calc(-1 * var(--bar))')
     ).toMatchSnapshot()
   })
+
+  it('should expand border-radius correctly', () => {
+    expect(expandProperty('borderRadius', '1px')).toMatchSnapshot()
+    expect(expandProperty('borderRadius', '1px 2em')).toMatchSnapshot()
+    expect(expandProperty('borderRadius', '1px 2em 3rem')).toMatchSnapshot()
+    expect(expandProperty('borderRadius', '1px 2em 3rem 4ch')).toMatchSnapshot()
+    expect(
+      expandProperty('borderRadius', '1px calc(var(--val, 0) + 1px / 1.1)')
+    ).toMatchSnapshot()
+    expect(expandProperty('borderRadius', '10px / 20px')).toMatchSnapshot()
+    expect(
+      expandProperty('borderRadius', '10px 5% / 20px 30px')
+    ).toMatchSnapshot()
+    expect(
+      expandProperty('borderRadius', '10px 5px 2em / 20px 25px 30%')
+    ).toMatchSnapshot()
+    expect(
+      expandProperty('borderRadius', '10px 5% / 20px 25em 30px 35em')
+    ).toMatchSnapshot()
+  })
 })

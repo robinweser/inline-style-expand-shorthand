@@ -66,6 +66,33 @@ function parseCircular(value, resolve) {
   }
 }
 
+function groupBy(values, divider) {
+  const groups = [[]];
+
+  values.forEach(val => {
+    if (val === divider) {
+      groups.push([]);
+    } else {
+      groups[groups.length - 1].push(val);
+    }
+  });
+
+  return groups;
+}
+
+function parseBorderRadius(value) {
+  const [first = [], second = []] = groupBy(splitShorthand(value), '/')
+  const [Top, Right = Top, Bottom = Top, Left = Right] = first
+  const [Top2, Right2 = Top2, Bottom2 = Top2, Left2 = Right2] = second
+
+  return {
+    borderTopLeftRadius: [Top, Top2].filter(Boolean).join(' '),
+    borderTopRightRadius: [Right, Right2].filter(Boolean).join(' '),
+    borderBottomRightRadius: [Bottom, Bottom2].filter(Boolean).join(' '),
+    borderBottomLeftRadius: [Left, Left2].filter(Boolean).join(' '),
+  }
+}
+
 var circularExpand = {
   borderWidth: key => 'border' + key + 'Width',
   borderColor: key => 'border' + key + 'Color',
@@ -120,6 +147,10 @@ function expandProperty(property, value) {
 
   if (property === 'flex') {
     return parseFlex(value.toString())
+  }
+
+  if (property === 'borderRadius') {
+    return parseBorderRadius(value.toString())
   }
 
   if (circularExpand[property]) {

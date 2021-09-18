@@ -1,5 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Expanding property values should expand border-radius correctly 1`] = `
+Object {
+  "borderBottomLeftRadius": "1px",
+  "borderBottomRightRadius": "1px",
+  "borderTopLeftRadius": "1px",
+  "borderTopRightRadius": "1px",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 2`] = `
+Object {
+  "borderBottomLeftRadius": "2em",
+  "borderBottomRightRadius": "1px",
+  "borderTopLeftRadius": "1px",
+  "borderTopRightRadius": "2em",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 3`] = `
+Object {
+  "borderBottomLeftRadius": "2em",
+  "borderBottomRightRadius": "3rem",
+  "borderTopLeftRadius": "1px",
+  "borderTopRightRadius": "2em",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 4`] = `
+Object {
+  "borderBottomLeftRadius": "4ch",
+  "borderBottomRightRadius": "3rem",
+  "borderTopLeftRadius": "1px",
+  "borderTopRightRadius": "2em",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 5`] = `
+Object {
+  "borderBottomLeftRadius": "calc(var(--val, 0) + 1px / 1.1)",
+  "borderBottomRightRadius": "1px",
+  "borderTopLeftRadius": "1px",
+  "borderTopRightRadius": "calc(var(--val, 0) + 1px / 1.1)",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 6`] = `
+Object {
+  "borderBottomLeftRadius": "10px 20px",
+  "borderBottomRightRadius": "10px 20px",
+  "borderTopLeftRadius": "10px 20px",
+  "borderTopRightRadius": "10px 20px",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 7`] = `
+Object {
+  "borderBottomLeftRadius": "5% 30px",
+  "borderBottomRightRadius": "10px 20px",
+  "borderTopLeftRadius": "10px 20px",
+  "borderTopRightRadius": "5% 30px",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 8`] = `
+Object {
+  "borderBottomLeftRadius": "5px 25px",
+  "borderBottomRightRadius": "2em 30%",
+  "borderTopLeftRadius": "10px 20px",
+  "borderTopRightRadius": "5px 25px",
+}
+`;
+
+exports[`Expanding property values should expand border-radius correctly 9`] = `
+Object {
+  "borderBottomLeftRadius": "5% 35em",
+  "borderBottomRightRadius": "10px 30px",
+  "borderTopLeftRadius": "10px 20px",
+  "borderTopRightRadius": "5% 25em",
+}
+`;
+
 exports[`Expanding property values should expand borders/outline correctly 1`] = `
 Object {
   "borderBottomColor": "grey",
