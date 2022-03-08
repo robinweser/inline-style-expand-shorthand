@@ -106,4 +106,9 @@ describe('Expanding property values', () => {
       expandProperty('borderRadius', '10px 5% / 20px 25em 30px 35em')
     ).toMatchSnapshot()
   })
+
+  it('should expand overflow correctly', () => {
+    expect(expandProperty('overflow', 'visible')).toMatchSnapshot()
+    expect(expandProperty('overflow', 'scroll hidden')).toMatchSnapshot()
+  })
 })

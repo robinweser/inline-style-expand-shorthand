@@ -132,6 +132,19 @@ function parseFlex(value) {
   return longhands
 }
 
+function parseOverflow(value) {
+  // https://www.w3.org/TR/css-overflow-3/#overflow-properties
+  const values = splitShorthand(value)
+
+  // The overflow property is a shorthand property that sets the specified values of overflow-x
+  // and overflow-y in that order. If the second value is omitted, it is copied from the first.
+  if (values.length === 1) {
+    return { overflowX: values[0], overflowY: values[0] }
+  }
+
+  return { overflowX: values[0], overflowY: values[1] }
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -151,6 +164,10 @@ function expandProperty(property, value) {
 
   if (property === 'borderRadius') {
     return parseBorderRadius(value.toString())
+  }
+
+  if (property === 'overflow') {
+    return parseOverflow(value.toString())
   }
 
   if (circularExpand[property]) {
