@@ -332,33 +332,11 @@ exports[`Expanding property values should expand flex correctly 4`] = `
 Object {
   "flexBasis": "20px",
   "flexGrow": "3",
+  "flexShrink": "1",
 }
 `;
 
 exports[`Expanding property values should expand flex correctly 5`] = `
-Object {
-  "flexBasis": "20px",
-  "flexGrow": "1",
-}
-`;
-
-exports[`Expanding property values should expand flex correctly 6`] = `
-Object {
-  "flexBasis": "20px",
-  "flexGrow": "1",
-  "flexShrink": "0",
-}
-`;
-
-exports[`Expanding property values should expand flex correctly 7`] = `
-Object {
-  "flexBasis": "20px",
-  "flexGrow": "1",
-  "flexShrink": "0",
-}
-`;
-
-exports[`Expanding property values should expand flex correctly 8`] = `
 Object {
   "flexBasis": "var(--foo)",
   "flexGrow": "1",
@@ -366,11 +344,43 @@ Object {
 }
 `;
 
-exports[`Expanding property values should expand flex correctly 9`] = `
+exports[`Expanding property values should expand flex correctly 6`] = `
 Object {
   "flexBasis": "calc(100% - var(--bar))",
   "flexGrow": "1",
   "flexShrink": "2",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 7`] = `
+Object {
+  "flexBasis": "auto",
+  "flexGrow": "0",
+  "flexShrink": "1",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 8`] = `
+Object {
+  "flexBasis": "auto",
+  "flexGrow": "1",
+  "flexShrink": "1",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 9`] = `
+Object {
+  "flexBasis": "auto",
+  "flexGrow": "0",
+  "flexShrink": "0",
+}
+`;
+
+exports[`Expanding property values should expand flex correctly 10`] = `
+Object {
+  "flexBasis": "0",
+  "flexGrow": "5",
+  "flexShrink": "1",
 }
 `;
 

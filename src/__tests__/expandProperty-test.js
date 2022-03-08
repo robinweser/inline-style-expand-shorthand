@@ -34,12 +34,23 @@ describe('Expanding property values', () => {
     expect(expandProperty('flex', '2 1 50%')).toMatchSnapshot()
     expect(expandProperty('flex', '3 1 20px')).toMatchSnapshot()
     expect(expandProperty('flex', '3 20px')).toMatchSnapshot()
-    expect(expandProperty('flex', '20px 1')).toMatchSnapshot()
-    expect(expandProperty('flex', '20px 1 0')).toMatchSnapshot()
-    expect(expandProperty('flex', '1 20px 0')).toMatchSnapshot()
     expect(expandProperty('flex', '1 2 var(--foo)')).toMatchSnapshot()
     expect(
       expandProperty('flex', '1 2 calc(100% - var(--bar))')
+    ).toMatchSnapshot()
+
+    // https://github.com/robinweser/inline-style-expand-shorthand/issues/14
+    expect(
+      expandProperty('flex', 'initial')
+    ).toMatchSnapshot()
+    expect(
+      expandProperty('flex', 'auto')
+    ).toMatchSnapshot()
+    expect(
+      expandProperty('flex', 'none')
+    ).toMatchSnapshot()
+    expect(
+      expandProperty('flex', '5')
     ).toMatchSnapshot()
   })
 
