@@ -93,6 +93,34 @@ function parseBorderRadius(value) {
   }
 }
 
+function parseTextDecoration(value) {
+  // https://www.w3.org/TR/css-text-decor-3/#text-decoration-property
+  const values = splitShorthand(value)
+
+  if (values.length === 1) {
+    // A text-decoration declaration that omits both the text-decoration-color and text-decoration-style
+    // values is backwards-compatible with CSS Levels 1 and 2.
+
+    if (values[0] === 'initial') {
+      return {
+        textDecorationLine: 'none'
+      }
+    }
+    return {
+      textDecorationLine: values[0]
+    }
+  }
+
+  // There is more than 1 value specfied, which indicates it is CSS Level 3.
+  const longhands = {};
+
+  longhands.textDecorationLine = values[0];
+  longhands.textDecorationStyle = values[1] || 'solid';
+  longhands.textDecorationColor = values[2] || 'currentColor';
+
+  return longhands
+}
+
 var circularExpand = {
   borderWidth: key => 'border' + key + 'Width',
   borderColor: key => 'border' + key + 'Color',
@@ -151,6 +179,10 @@ function expandProperty(property, value) {
 
   if (property === 'borderRadius') {
     return parseBorderRadius(value.toString())
+  }
+
+  if (property === 'textDecoration') {
+    return parseTextDecoration(value.toString())
   }
 
   if (circularExpand[property]) {

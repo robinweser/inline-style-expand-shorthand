@@ -106,4 +106,11 @@ describe('Expanding property values', () => {
       expandProperty('borderRadius', '10px 5% / 20px 25em 30px 35em')
     ).toMatchSnapshot()
   })
+
+  it('should expand text-decoration correctly', () => {
+    expect(expandProperty('textDecoration', 'initial')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'none')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'underline')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'navy dotted underline')).toMatchSnapshot()
+  })
 })
