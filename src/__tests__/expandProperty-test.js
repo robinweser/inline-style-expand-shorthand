@@ -107,6 +107,14 @@ describe('Expanding property values', () => {
     ).toMatchSnapshot()
   })
 
+
+  it('should expand text-decoration correctly', () => {
+    expect(expandProperty('textDecoration', 'initial')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'none')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'underline')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'navy dotted underline')).toMatchSnapshot()
+  })
+  
   it('should expand overflow correctly', () => {
     expect(expandProperty('overflow', 'visible')).toMatchSnapshot()
     expect(expandProperty('overflow', 'scroll hidden')).toMatchSnapshot()

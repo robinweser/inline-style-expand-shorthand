@@ -486,3 +486,29 @@ Object {
   "paddingTop": "15px",
 }
 `;
+
+exports[`Expanding property values should expand text-decoration correctly 1`] = `
+Object {
+  "textDecorationLine": "none",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 2`] = `
+Object {
+  "textDecorationLine": "none",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 3`] = `
+Object {
+  "textDecorationLine": "underline",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 4`] = `
+Object {
+  "textDecorationColor": "underline",
+  "textDecorationLine": "navy",
+  "textDecorationStyle": "dotted",
+}
+`;
