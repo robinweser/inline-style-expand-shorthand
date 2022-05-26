@@ -40,7 +40,8 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 - outline
 - flex
 - textDecoration
-
+- overflow
+- 
 > Need more? Feel free to [create an issue](https://github.com/rofrischmann/inline-style-expand-shorthand/issues/new) with a proposal!
 
 ## Usage
