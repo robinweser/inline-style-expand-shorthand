@@ -3,6 +3,7 @@ const CALC = /^(calc\()/i
 const VAR = /^(var\()/i
 const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i
 const BORDER_WIDTH = /^(thick|medium|think)$/i
+const PURE_NUMBER = /^\d+$/
 
 function splitShorthand(value) {
   let values = ['']
@@ -138,24 +139,84 @@ var borderExpand = {
 }
 
 function parseFlex(value) {
-  const values = splitShorthand(value)
+  let values = [''];
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/flex#values
+  switch (value.trim()) {
+    case 'initial':
+      // "flex: initial" is equivalent to "flex: 0 1 auto"
+      values = splitShorthand('0 1 auto');
+      break;
+
+    case 'auto':
+      // "flex: auto" is equivalent to "flex: 1 1 auto"
+      values = splitShorthand('1 1 auto');
+      break;
+
+    case 'none':
+      // "flex: none" is equivalent to "flex: 0 0 auto"
+      values = splitShorthand('0 0 auto');
+      break;
+
+    default:
+      values = splitShorthand(value);
+      break;
+  }
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/flex#syntax
+  // https://www.w3.org/TR/css-flexbox-1/
+
+  // Expand one-value syntax to three-value syntax
+  if (values.length === 1) {
+    // One-value syntax
+    const val = values[0]
+    if (
+      val.match(PURE_NUMBER) !== null
+    ) {
+      values = splitShorthand(val + ' 1 0');
+    } else {
+      // It is a width value
+      values = splitShorthand('1 1 ' + val);
+    }
+  }
+
   const longhands = {}
 
-  values.forEach(val => {
+  if (values.length === 2) {
+    // Two-value syntax
+    longhands.flexGrow = values[0];
+
     if (
-      val.match(LENGTH_UNIT) !== null ||
-      val.match(CALC) !== null ||
-      val.match(VAR) !== null
+      values[1].match(PURE_NUMBER) !== null
     ) {
-      longhands.flexBasis = val
+      // The second value appears to be a shrink factor
+      longhands.flexShrink = values[1];
     } else {
-      if (longhands.flexGrow) {
-        longhands.flexShrink = val
-      } else {
-        longhands.flexGrow = val
-      }
+      // The second value appears to be width
+      longhands.flexBasis = values[1];
     }
-  })
+  } else {
+    // Three-value syntax
+    longhands.flexGrow = values[0];
+    longhands.flexShrink = values[1];
+    longhands.flexBasis = values[2];
+  }
+
+  // According to the spec: Authors are encouraged to control flexibility using the flex shorthand rather than with its longhand
+  // properties directly, as the shorthand correctly resets any unspecified components to accommodate common uses.
+  //
+  // Thus in order to maintain the correct behavior, we have to reset any unspecified longhand properties to their default values.
+
+  // Add default value, initialized value is "0 1 auto"
+  if (typeof longhands.flexGrow === 'undefined') {
+    longhands.flexGrow = '0';
+  }
+  if (typeof longhands.flexShrink === 'undefined') {
+    longhands.flexShrink = '1';
+  }
+  if (typeof longhands.flexBasis === 'undefined') {
+    longhands.flexBasis = 'auto';
+  }
 
   return longhands
 }
