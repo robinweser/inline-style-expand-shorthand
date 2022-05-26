@@ -374,6 +374,20 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand overflow correctly 1`] = `
+Object {
+  "overflowX": "visible",
+  "overflowY": "visible",
+}
+`;
+
+exports[`Expanding property values should expand overflow correctly 2`] = `
+Object {
+  "overflowX": "scroll",
+  "overflowY": "hidden",
+}
+`;
+
 exports[`Expanding property values should expand padding/margin correctly 1`] = `
 Object {
   "paddingBottom": "5px",
