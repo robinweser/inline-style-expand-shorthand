@@ -130,4 +130,11 @@ describe('Expanding property values', () => {
     expect(expandProperty('overflow', 'visible')).toMatchSnapshot()
     expect(expandProperty('overflow', 'scroll hidden')).toMatchSnapshot()
   })
+
+  it('should expand gap correctly', () => {
+    expect(expandProperty('gap', '20px')).toMatchSnapshot()
+    expect(expandProperty('gap', '50%')).toMatchSnapshot()
+    expect(expandProperty('gap', '20px 10px')).toMatchSnapshot()
+    expect(expandProperty('gap', 'unset')).toMatchSnapshot()
+  })
 })

@@ -384,6 +384,34 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand gap correctly 1`] = `
+Object {
+  "columnGap": "20px",
+  "rowGap": "20px",
+}
+`;
+
+exports[`Expanding property values should expand gap correctly 2`] = `
+Object {
+  "columnGap": "50%",
+  "rowGap": "50%",
+}
+`;
+
+exports[`Expanding property values should expand gap correctly 3`] = `
+Object {
+  "columnGap": "10px",
+  "rowGap": "20px",
+}
+`;
+
+exports[`Expanding property values should expand gap correctly 4`] = `
+Object {
+  "columnGap": "unset",
+  "rowGap": "unset",
+}
+`;
+
 exports[`Expanding property values should expand overflow correctly 1`] = `
 Object {
   "overflowX": "visible",

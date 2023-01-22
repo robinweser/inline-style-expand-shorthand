@@ -41,6 +41,7 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 - flex
 - textDecoration
 - overflow
+- gap
 
 > Need more? Feel free to [create an issue](https://github.com/rofrischmann/inline-style-expand-shorthand/issues/new) with a proposal!
 

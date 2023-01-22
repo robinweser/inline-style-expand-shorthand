@@ -234,6 +234,16 @@ function parseOverflow(value) {
   return { overflowX: values[0], overflowY: values[1] }
 }
 
+function parseGap(value) {
+  // https://w3c.github.io/csswg-drafts/css-align/#gap-shorthand
+  const [rowGap, columnGap = rowGap] = splitShorthand(value)
+  // This property is a shorthand that sets row-gap and column-gap in one declaration. If <'column-gap'> is omitted, it’s set to the same value as <'row-gap'>.
+  return {
+    rowGap,
+    columnGap
+  }
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -262,6 +272,10 @@ function expandProperty(property, value) {
   
   if (property === 'overflow') {
     return parseOverflow(value.toString())
+  }
+
+  if (property === 'gap') {
+    return parseGap(value.toString())
   }
 
   if (circularExpand[property]) {
