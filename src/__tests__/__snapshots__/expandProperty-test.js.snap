@@ -586,6 +586,20 @@ Object {
 
 exports[`Expanding property values should expand placeContent correctly 4`] = `Object {}`;
 
+exports[`Expanding property values should expand placeItems correctly 1`] = `
+Object {
+  "alignItems": "center",
+  "justifyItems": "center",
+}
+`;
+
+exports[`Expanding property values should expand placeItems correctly 2`] = `
+Object {
+  "alignItems": "auto",
+  "justifyItems": "center",
+}
+`;
+
 exports[`Expanding property values should expand text-decoration correctly 1`] = `
 Object {
   "textDecorationLine": "none",

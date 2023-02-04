@@ -321,6 +321,16 @@ function parsePlaceContent(value) {
   }
 }
 
+// https://w3c.github.io/csswg-drafts/css-align/#place-items-property
+function parsePlaceItems(value) {
+  // This shorthand property sets both the align-items and justify-items properties in a single declaration. The first value is assigned to align-items. The second value is assigned to justify-items; if omitted, it is copied from the first value.
+  const [alignItems, justifyItems = alignItems] = splitShorthand(value);
+  return {
+    alignItems,
+    justifyItems
+  }
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -342,7 +352,6 @@ function expandProperty(property, value) {
     return parseBorderRadius(value.toString())
   }
 
-
   if (property === 'textDecoration') {
     return parseTextDecoration(value.toString())
   }
@@ -361,6 +370,10 @@ function expandProperty(property, value) {
 
   if (property === 'placeContent') {
     return parsePlaceContent(value.toString())
+  }
+
+  if (property === 'placeItems') {
+    return parsePlaceItems(value.toString())
   }
 
   if (circularExpand[property]) {

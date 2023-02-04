@@ -159,4 +159,9 @@ describe('Expanding property values', () => {
     // should use "start" for base-position single value
     expect(expandProperty('placeContent', 'left')).toMatchSnapshot()
   })
+
+  it('should expand placeItems correctly', () => {
+    expect(expandProperty('placeItems', 'center')).toMatchSnapshot()
+    expect(expandProperty('placeItems', 'auto center')).toMatchSnapshot()
+  })
 })
