@@ -125,7 +125,7 @@ describe('Expanding property values', () => {
     expect(expandProperty('textDecoration', 'underline')).toMatchSnapshot()
     expect(expandProperty('textDecoration', 'navy dotted underline')).toMatchSnapshot()
   })
-  
+
   it('should expand overflow correctly', () => {
     expect(expandProperty('overflow', 'visible')).toMatchSnapshot()
     expect(expandProperty('overflow', 'scroll hidden')).toMatchSnapshot()
@@ -136,5 +136,18 @@ describe('Expanding property values', () => {
     expect(expandProperty('gap', '50%')).toMatchSnapshot()
     expect(expandProperty('gap', '20px 10px')).toMatchSnapshot()
     expect(expandProperty('gap', 'unset')).toMatchSnapshot()
+  })
+
+  it('should expand flexFlow correctly', () => {
+    expect(expandProperty('flexFlow', 'column')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'wrap')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'row wrap')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'wrap row')).toMatchSnapshot()
+    // should ignore invalid value
+    expect(expandProperty('flexFlow', 'asdfg')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'flow asdfg')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'asdfg flow')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'flow flow')).toMatchSnapshot()
+    expect(expandProperty('flexFlow', 'wrap wrap')).toMatchSnapshot()
   })
 })

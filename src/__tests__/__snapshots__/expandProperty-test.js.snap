@@ -384,6 +384,44 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand flexFlow correctly 1`] = `
+Object {
+  "flexDirection": "column",
+  "flexWrap": "nowrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 2`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 3`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 4`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 5`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 6`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 7`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 8`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 9`] = `Object {}`;
+
 exports[`Expanding property values should expand gap correctly 1`] = `
 Object {
   "columnGap": "20px",

@@ -5,6 +5,9 @@ const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|rid
 const BORDER_WIDTH = /^(thick|medium|think)$/i
 const PURE_NUMBER = /^\d+$/
 
+const GLOBAL_VALUES = ['inherit', 'initial', 'unset', 'revert', 'revert-layer'];
+
+
 function splitShorthand(value) {
   let values = ['']
   let openParensCount = 0
@@ -244,6 +247,51 @@ function parseGap(value) {
   }
 }
 
+const flexDirectionValues = new Set([...GLOBAL_VALUES, 'row', 'row-reverse', 'column', 'column-reverse'])
+const flexWrapValues = new Set([...GLOBAL_VALUES, 'nowrap', 'wrap', 'reverse'])
+
+function parseFlexFlow(value) {
+  // https://w3c.github.io/csswg-drafts/css-flexbox/#flex-flow-property
+  // initial value is specified individually for each of the flex-direction and flex-wrap properties
+  let flexDirection = '';
+  let flexWrap = '';
+  const [left, right] = splitShorthand(value)
+
+  const extractFlexFlowValue = (value) => {
+    if (value) {
+      if (flexDirectionValues.has(value)) {
+        if (flexDirection !== '') {
+          // flex-direction has already been set, original value invalid
+          return true;
+        }
+        flexDirection = value;
+      } else if (flexWrapValues.has(value)) {
+        if (flexWrap !== '') {
+          // flex-wrap has already been set, original value invalid
+          return true;
+        }
+        flexWrap = value;
+      } else {
+        // invalid value
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  if (extractFlexFlowValue(left) || extractFlexFlowValue(right)) {
+    // invalid value, ignore both values
+    return {};
+  }
+
+  return {
+    // only fallback to default value when original value is valid
+    flexDirection: flexDirection || 'row',
+    flexWrap: flexWrap || 'nowrap'
+  }
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -269,13 +317,17 @@ function expandProperty(property, value) {
   if (property === 'textDecoration') {
     return parseTextDecoration(value.toString())
   }
-  
+
   if (property === 'overflow') {
     return parseOverflow(value.toString())
   }
 
   if (property === 'gap') {
     return parseGap(value.toString())
+  }
+
+  if (property === 'flexFlow') {
+    return parseFlexFlow(value.toString())
   }
 
   if (circularExpand[property]) {
