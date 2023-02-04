@@ -183,4 +183,11 @@ describe('Expanding property values', () => {
     expect(expandProperty('transition', 'margin 2s 1s ease-in')).toMatchSnapshot()
     expect(expandProperty('transition', 'margin-right 4s, color 1s')).toMatchSnapshot()
   })
+
+  it('should expand inset correctly', () => {
+    expect(expandProperty('inset', '12px')).toMatchSnapshot()
+    expect(expandProperty('inset', '12px 24px')).toMatchSnapshot()
+    expect(expandProperty('inset', '12px 24px 48px')).toMatchSnapshot()
+    expect(expandProperty('inset', '12px 24px 48px 72px')).toMatchSnapshot()
+  })
 })

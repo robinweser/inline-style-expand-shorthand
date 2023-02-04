@@ -449,6 +449,16 @@ function parseTransition(value) {
   );
 }
 
+function parseInset(value) {
+  const [top, right = top, bottom = top, left = right] = splitShorthand(value);
+  return {
+    top,
+    right,
+    bottom,
+    left,
+  };
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -500,6 +510,10 @@ function expandProperty(property, value) {
 
   if (property === 'transition') {
     return parseTransition(value.toString())
+  }
+
+  if (property === 'inset') {
+    return parseInset(value.toString())
   }
 
   if (circularExpand[property]) {

@@ -450,6 +450,42 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand inset correctly 1`] = `
+Object {
+  "bottom": "12px",
+  "left": "12px",
+  "right": "12px",
+  "top": "12px",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 2`] = `
+Object {
+  "bottom": "12px",
+  "left": "24px",
+  "right": "24px",
+  "top": "12px",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 3`] = `
+Object {
+  "bottom": "48px",
+  "left": "24px",
+  "right": "24px",
+  "top": "12px",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 4`] = `
+Object {
+  "bottom": "48px",
+  "left": "72px",
+  "right": "24px",
+  "top": "12px",
+}
+`;
+
 exports[`Expanding property values should expand overflow correctly 1`] = `
 Object {
   "overflowX": "visible",
