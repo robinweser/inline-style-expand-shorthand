@@ -124,6 +124,12 @@ describe('Expanding property values', () => {
     expect(expandProperty('textDecoration', 'none')).toMatchSnapshot()
     expect(expandProperty('textDecoration', 'underline')).toMatchSnapshot()
     expect(expandProperty('textDecoration', 'navy dotted underline')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'underline overline')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'underline red')).toMatchSnapshot()
+    expect(expandProperty('textDecoration', 'underline wavy red')).toMatchSnapshot()
+
+    // should ignore repeated line value (invalid)
+    expect(expandProperty('textDecoration', 'underline underline')).toMatchSnapshot()
   })
 
   it('should expand overflow correctly', () => {

@@ -4,9 +4,7 @@ const VAR = /^(var\()/i
 const BORDER_STYLE = /^(dashed|dotted|double|groove|hidden|inset|none|outset|ridge|solid)$/i
 const BORDER_WIDTH = /^(thick|medium|think)$/i
 const PURE_NUMBER = /^\d+$/
-
 const GLOBAL_VALUES = ['inherit', 'initial', 'unset', 'revert', 'revert-layer'];
-
 
 function splitShorthand(value) {
   let values = ['']
@@ -97,14 +95,17 @@ function parseBorderRadius(value) {
   }
 }
 
+const textDecorationLineValues = new Set(GLOBAL_VALUES.concat(['none', 'underline', 'overline', 'line-through', 'blink']));
+const textDecorationStyleValues = new Set(GLOBAL_VALUES.concat(['solid', 'double', 'dotted', 'dashed', 'wavy']));
+
 function parseTextDecoration(value) {
   // https://www.w3.org/TR/css-text-decor-3/#text-decoration-property
+  // https://w3c.github.io/csswg-drafts/css-text-decor/#text-decoration-property
   const values = splitShorthand(value)
 
   if (values.length === 1) {
     // A text-decoration declaration that omits both the text-decoration-color and text-decoration-style
     // values is backwards-compatible with CSS Levels 1 and 2.
-
     if (values[0] === 'initial') {
       return {
         textDecorationLine: 'none'
@@ -115,14 +116,44 @@ function parseTextDecoration(value) {
     }
   }
 
-  // There is more than 1 value specfied, which indicates it is CSS Level 3.
-  const longhands = {};
+  const [left, middle, right] = values;
 
-  longhands.textDecorationLine = values[0];
-  longhands.textDecorationStyle = values[1] || 'solid';
-  longhands.textDecorationColor = values[2] || 'currentColor';
+  const lineValue = []
+  let colorValue = ''
+  let styleValue = ''
 
-  return longhands
+  const extractValues = (v) => {
+    if (v) {
+      if (textDecorationLineValues.has(v)) {
+        if (lineValue.length === 0 || !lineValue.includes(v)) {
+          lineValue.push(v);
+        } else {
+          // Repeated line value, invalid, bail out!
+          return true;
+        }
+      } else if (textDecorationStyleValues.has(v)) {
+        styleValue = v;
+      } else {
+        colorValue = v;
+      }
+    }
+    // Valid, continue
+    return false;
+  };
+
+  if (extractValues(left) || extractValues(middle) || extractValues(right)) {
+    // Invalid, ignore
+    return {};
+  }
+
+  lineValue.sort(); // Ensure the sorting is always in the same order.
+  const textDecorationLine = lineValue.length ? lineValue.join(' ') : 'none';
+
+  return {
+    textDecorationLine,
+    textDecorationStyle: styleValue || 'solid',
+    textDecorationColor: colorValue || 'currentColor',
+  }
 }
 
 var circularExpand = {

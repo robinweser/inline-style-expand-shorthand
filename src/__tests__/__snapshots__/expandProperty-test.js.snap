@@ -634,8 +634,34 @@ Object {
 
 exports[`Expanding property values should expand text-decoration correctly 4`] = `
 Object {
-  "textDecorationColor": "underline",
-  "textDecorationLine": "navy",
+  "textDecorationColor": "navy",
+  "textDecorationLine": "underline",
   "textDecorationStyle": "dotted",
 }
 `;
+
+exports[`Expanding property values should expand text-decoration correctly 5`] = `
+Object {
+  "textDecorationColor": "currentColor",
+  "textDecorationLine": "overline underline",
+  "textDecorationStyle": "solid",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 6`] = `
+Object {
+  "textDecorationColor": "red",
+  "textDecorationLine": "underline",
+  "textDecorationStyle": "solid",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 7`] = `
+Object {
+  "textDecorationColor": "red",
+  "textDecorationLine": "underline",
+  "textDecorationStyle": "wavy",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 8`] = `Object {}`;
