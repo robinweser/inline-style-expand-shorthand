@@ -150,4 +150,13 @@ describe('Expanding property values', () => {
     expect(expandProperty('flexFlow', 'flow flow')).toMatchSnapshot()
     expect(expandProperty('flexFlow', 'wrap wrap')).toMatchSnapshot()
   })
+
+  it('should expand placeContent correctly', () => {
+    expect(expandProperty('placeContent', 'center')).toMatchSnapshot()
+    expect(expandProperty('placeContent', 'center start')).toMatchSnapshot()
+
+    expect(expandProperty('placeContent', 'baseline')).toMatchSnapshot()
+    // should use "start" for base-position single value
+    expect(expandProperty('placeContent', 'left')).toMatchSnapshot()
+  })
 })

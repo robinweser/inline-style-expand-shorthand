@@ -290,6 +290,37 @@ function parseFlexFlow(value) {
   }
 }
 
+// https://w3c.github.io/csswg-drafts/css-align/#place-content
+function parsePlaceContent(value) {
+  // The first value is assigned to align-content.
+  // The second value is assigned to justify-content
+  let [alignContent, justifyContent] = splitShorthand(value)
+  if (!justifyContent && alignContent) {
+    // if omitted, ...
+    if (
+      alignContent === 'left'
+      || alignContent === 'right'
+      || alignContent === 'first'
+      || alignContent === 'last'
+    ) {
+      // invalid value, ignore both values
+      return {}
+    }
+    if (alignContent === 'baseline') {
+      // ..., unless that value is a <baseline-position> in which case it is defaulted to start.
+      justifyContent = 'start'
+    } else {
+      // ..., it is copied from the first value
+      justifyContent = alignContent
+    }
+  }
+
+  return {
+    alignContent,
+    justifyContent
+  }
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -326,6 +357,10 @@ function expandProperty(property, value) {
 
   if (property === 'flexFlow') {
     return parseFlexFlow(value.toString())
+  }
+
+  if (property === 'placeContent') {
+    return parsePlaceContent(value.toString())
   }
 
   if (circularExpand[property]) {

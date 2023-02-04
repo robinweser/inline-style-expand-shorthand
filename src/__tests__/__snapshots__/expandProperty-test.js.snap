@@ -563,6 +563,29 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand placeContent correctly 1`] = `
+Object {
+  "alignContent": "center",
+  "justifyContent": "center",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 2`] = `
+Object {
+  "alignContent": "center",
+  "justifyContent": "start",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 3`] = `
+Object {
+  "alignContent": "baseline",
+  "justifyContent": "start",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 4`] = `Object {}`;
+
 exports[`Expanding property values should expand text-decoration correctly 1`] = `
 Object {
   "textDecorationLine": "none",
