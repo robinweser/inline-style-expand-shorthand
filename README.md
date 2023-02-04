@@ -36,7 +36,11 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 - borderColor
 - borderRadius
 - padding
+- padding-inline
+- padding-block
 - margin
+- margin-inline
+- margin-block
 - outline
 - flex
 - flexFlow

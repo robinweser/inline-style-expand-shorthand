@@ -190,4 +190,18 @@ describe('Expanding property values', () => {
     expect(expandProperty('inset', '12px 24px 48px')).toMatchSnapshot()
     expect(expandProperty('inset', '12px 24px 48px 72px')).toMatchSnapshot()
   })
+
+  it('should expand {padding/margin}-{inline/block} correctly', () => {
+    expect(expandProperty('paddingInline', '10px 20px')).toMatchSnapshot()
+    expect(expandProperty('paddingInline', '10px')).toMatchSnapshot()
+
+    expect(expandProperty('paddingBlock', '10px 20px')).toMatchSnapshot()
+    expect(expandProperty('paddingBlock', '10px')).toMatchSnapshot()
+
+    expect(expandProperty('marginInline', '10px 20px')).toMatchSnapshot()
+    expect(expandProperty('marginInline', '10px')).toMatchSnapshot()
+
+    expect(expandProperty('marginBlock', '10px 20px')).toMatchSnapshot()
+    expect(expandProperty('marginBlock', '10px')).toMatchSnapshot()
+  })
 })

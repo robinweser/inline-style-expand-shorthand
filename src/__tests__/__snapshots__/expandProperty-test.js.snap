@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 1`] = `
+Object {
+  "paddingInlineEnd": "20px",
+  "paddingInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 2`] = `
+Object {
+  "paddingInlineEnd": "10px",
+  "paddingInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 3`] = `
+Object {
+  "paddingBlockEnd": "20px",
+  "paddingBlockStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 4`] = `
+Object {
+  "paddingBlockEnd": "10px",
+  "paddingBlockStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 5`] = `
+Object {
+  "marginInlineEnd": "20px",
+  "marginInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 6`] = `
+Object {
+  "marginInlineEnd": "10px",
+  "marginInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 7`] = `
+Object {
+  "marginBlockEnd": "20px",
+  "marginBlockStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 8`] = `
+Object {
+  "marginBlockEnd": "10px",
+  "marginBlockStart": "10px",
+}
+`;
+
 exports[`Expanding property values should expand border-radius correctly 1`] = `
 Object {
   "borderBottomLeftRadius": "1px",

@@ -68,6 +68,15 @@ function parseCircular(value, resolve) {
   }
 }
 
+function parsePosition(value, resolve) {
+  const [Start, End = Start] = splitShorthand(value)
+
+  return {
+    [resolve('Start')]: Start,
+    [resolve('End')]: End,
+  }
+}
+
 function groupBy(values, divider) {
   const groups = [[]];
 
@@ -156,7 +165,7 @@ function parseTextDecoration(value) {
   }
 }
 
-var circularExpand = {
+const circularExpand = {
   borderWidth: key => 'border' + key + 'Width',
   borderColor: key => 'border' + key + 'Color',
   borderStyle: key => 'border' + key + 'Style',
@@ -164,12 +173,19 @@ var circularExpand = {
   margin: key => 'margin' + key,
 }
 
-var borderExpand = {
+const borderExpand = {
   borderLeft: key => 'borderLeft' + key,
   borderTop: key => 'borderTop' + key,
   borderRight: key => 'borderRight' + key,
   borderBottom: key => 'borderBottom' + key,
   outline: key => 'outline' + key,
+}
+
+const positionExpand = {
+  paddingInline: key => 'paddingInline' + key,
+  paddingBlock: key => 'paddingBlock' + key,
+  marginInline: key => 'marginInline' + key,
+  marginBlock: key => 'marginBlock' + key,
 }
 
 function parseFlex(value) {
@@ -522,6 +538,10 @@ function expandProperty(property, value) {
 
   if (borderExpand[property]) {
     return parseBorder(value.toString(), borderExpand[property])
+  }
+
+  if (positionExpand[property]) {
+    return parsePosition(value.toString(), positionExpand[property])
   }
 }
 
