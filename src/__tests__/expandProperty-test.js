@@ -175,4 +175,12 @@ describe('Expanding property values', () => {
     expect(expandProperty('placeItems', 'start')).toMatchSnapshot()
     expect(expandProperty('placeItems', 'end start')).toMatchSnapshot()
   })
+
+  it('should expand transition correctly', () => {
+    expect(expandProperty('transition', 'initial')).toMatchSnapshot()
+    expect(expandProperty('transition', 'margin 2s')).toMatchSnapshot()
+    expect(expandProperty('transition', 'margin 2s 1s')).toMatchSnapshot()
+    expect(expandProperty('transition', 'margin 2s 1s ease-in')).toMatchSnapshot()
+    expect(expandProperty('transition', 'margin-right 4s, color 1s')).toMatchSnapshot()
+  })
 })

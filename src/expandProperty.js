@@ -371,6 +371,84 @@ function parsePlaceSelf(value) {
   }
 }
 
+// https://w3c.github.io/csswg-drafts/css-transitions/#transition-shorthand-property
+// Since transition can accept multiple values, we will run extraction on each value
+const extractTransition = (value) => {
+  const values = splitShorthand(value)
+
+  if (values.length === 1) {
+    if (GLOBAL_VALUES.includes(values[0])) {
+      return {
+        transitionProperty: values[0],
+        transitionDuration: values[0],
+        transitionDelay: values[0],
+        transitionTimingFunction: values[0]
+      }
+    } else if (values[0] === 'all' || values[0] === 'none') {
+      return {
+        transitionProperty: values[0],
+        transitionDuration: '0s', // https://w3c.github.io/csswg-drafts/css-transitions/#transition-duration-property
+        transitionDelay: '0s', // https://w3c.github.io/csswg-drafts/css-transitions/#transition-delay-property
+        transitionTimingFunction: 'ease' // https://w3c.github.io/csswg-drafts/css-transitions/#transition-timing-function-property
+      }
+    }
+  }
+
+  // Note that order is important within the items in this property: the first value that can be parsed as a time is assigned to the transition-duration, and the second value that can be parsed as a time is assigned to transition-delay.
+  const [
+    transitionProperty,
+    transitionDuration = '0s',
+    transitionDelay = '0s',
+    transitionTimingFunction = 'ease'
+  ] = values
+
+  return {
+    transitionProperty,
+    transitionDuration,
+    transitionDelay,
+    transitionTimingFunction
+  }
+}
+// https://w3c.github.io/csswg-drafts/css-transitions/#transition-shorthand-property
+function parseTransition(value) {
+  if (!value.includes(',')) {
+    // single value, let's do fast path
+    return extractTransition(value)
+  }
+
+  const transitions = value.split(',').map(extractTransition)
+  // merge multiple transitions
+  // See https://developer.mozilla.org/en-US/docs/Web/CSS/transition#syntax for examples
+  // The merge is adapted from microsoft/griffel, which is also an Atomic CSS-in-JS library
+  // https://github.com/microsoft/griffel/blob/76662f70e846523bd1ab663f3340d4906333c795/packages/core/src/shorthands/transition.ts#LL64-L80C5
+  return transitions.reduce(
+    (
+      acc,
+      {
+        transitionProperty,
+        transitionDuration,
+        transitionDelay,
+        transitionTimingFunction
+      },
+      index
+    ) => {
+      if (index === 0) {
+        acc.transitionProperty = transitionProperty;
+        acc.transitionDuration = transitionDuration;
+        acc.transitionDelay = transitionDelay;
+        acc.transitionTimingFunction = transitionTimingFunction;
+      } else {
+        acc.transitionProperty += `, ${transitionProperty}`;
+        acc.transitionDuration += `, ${transitionDuration}`;
+        acc.transitionDelay += `, ${transitionDelay}`;
+        acc.transitionTimingFunction += `, ${transitionTimingFunction}`;
+      }
+      return acc;
+    },
+    {},
+  );
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -418,6 +496,10 @@ function expandProperty(property, value) {
 
   if (property === 'placeSelf') {
     return parsePlaceSelf(value.toString())
+  }
+
+  if (property === 'transition') {
+    return parseTransition(value.toString())
   }
 
   if (circularExpand[property]) {

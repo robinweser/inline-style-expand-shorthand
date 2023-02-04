@@ -665,3 +665,48 @@ Object {
 `;
 
 exports[`Expanding property values should expand text-decoration correctly 8`] = `Object {}`;
+
+exports[`Expanding property values should expand transition correctly 1`] = `
+Object {
+  "transitionDelay": "initial",
+  "transitionDuration": "initial",
+  "transitionProperty": "initial",
+  "transitionTimingFunction": "initial",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 2`] = `
+Object {
+  "transitionDelay": "0s",
+  "transitionDuration": "2s",
+  "transitionProperty": "margin",
+  "transitionTimingFunction": "ease",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 3`] = `
+Object {
+  "transitionDelay": "1s",
+  "transitionDuration": "2s",
+  "transitionProperty": "margin",
+  "transitionTimingFunction": "ease",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 4`] = `
+Object {
+  "transitionDelay": "1s",
+  "transitionDuration": "2s",
+  "transitionProperty": "margin",
+  "transitionTimingFunction": "ease-in",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 5`] = `
+Object {
+  "transitionDelay": "0s, 0s",
+  "transitionDuration": "4s, 1s",
+  "transitionProperty": "margin-right, color",
+  "transitionTimingFunction": "ease, ease",
+}
+`;
