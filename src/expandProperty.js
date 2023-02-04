@@ -245,8 +245,8 @@ function parseGap(value) {
   }
 }
 
-const flexDirectionValues = new Set([...GLOBAL_VALUES, 'row', 'row-reverse', 'column', 'column-reverse'])
-const flexWrapValues = new Set([...GLOBAL_VALUES, 'nowrap', 'wrap', 'reverse'])
+const flexDirectionValues = new Set(GLOBAL_VALUES.concat(['row', 'row-reverse', 'column', 'column-reverse']))
+const flexWrapValues = new Set(GLOBAL_VALUES.concat(['nowrap', 'wrap', 'reverse']))
 
 function parseFlexFlow(value) {
   // https://w3c.github.io/csswg-drafts/css-flexbox/#flex-flow-property
