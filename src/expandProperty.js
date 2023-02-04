@@ -68,7 +68,7 @@ function parseCircular(value, resolve) {
   }
 }
 
-function parsePosition(value, resolve) {
+function parseFlowRelativePosition(value, resolve) {
   const [Start, End = Start] = splitShorthand(value)
 
   return {
@@ -183,7 +183,7 @@ const borderExpand = {
   outline: key => 'outline' + key,
 }
 
-const positionExpand = {
+const flowRelativePositionExpand = {
   paddingInline: key => 'paddingInline' + key,
   paddingBlock: key => 'paddingBlock' + key,
   marginInline: key => 'marginInline' + key,
@@ -542,8 +542,8 @@ function expandProperty(property, value) {
     return parseBorder(value.toString(), borderExpand[property])
   }
 
-  if (positionExpand[property]) {
-    return parsePosition(value.toString(), positionExpand[property])
+  if (flowRelativePositionExpand[property]) {
+    return parseFlowRelativePosition(value.toString(), flowRelativePositionExpand[property])
   }
 }
 
