@@ -600,6 +600,20 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand placeSelf correctly 1`] = `
+Object {
+  "alignItems": "start",
+  "justifyItems": "start",
+}
+`;
+
+exports[`Expanding property values should expand placeSelf correctly 2`] = `
+Object {
+  "alignItems": "end",
+  "justifyItems": "start",
+}
+`;
+
 exports[`Expanding property values should expand text-decoration correctly 1`] = `
 Object {
   "textDecorationLine": "none",

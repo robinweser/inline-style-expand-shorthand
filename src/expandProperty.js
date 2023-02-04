@@ -331,6 +331,15 @@ function parsePlaceItems(value) {
   }
 }
 
+function parsePlaceSelf(value) {
+  // https://w3c.github.io/csswg-drafts/css-align/#place-self-property
+  const [alignSelf, justifySelf = alignSelf] = splitShorthand(value);
+  return {
+    alignSelf,
+    justifySelf
+  }
+}
+
 function expandProperty(property, value) {
   // special expansion for the border property as its 2 levels deep
   if (property === 'border') {
@@ -374,6 +383,10 @@ function expandProperty(property, value) {
 
   if (property === 'placeItems') {
     return parsePlaceItems(value.toString())
+  }
+
+  if (property === 'placeSelf') {
+    return parsePlaceSelf(value.toString())
   }
 
   if (circularExpand[property]) {

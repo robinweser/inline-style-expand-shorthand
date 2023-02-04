@@ -164,4 +164,9 @@ describe('Expanding property values', () => {
     expect(expandProperty('placeItems', 'center')).toMatchSnapshot()
     expect(expandProperty('placeItems', 'auto center')).toMatchSnapshot()
   })
+
+  it('should expand placeSelf correctly', () => {
+    expect(expandProperty('placeItems', 'start')).toMatchSnapshot()
+    expect(expandProperty('placeItems', 'end start')).toMatchSnapshot()
+  })
 })
