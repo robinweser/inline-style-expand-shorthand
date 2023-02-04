@@ -173,12 +173,11 @@ function parseFlex(value) {
   if (values.length === 1) {
     // One-value syntax
     const val = values[0]
-    if (
-      val.match(PURE_NUMBER) !== null
-    ) {
+    if (PURE_NUMBER.test(val)) {
+      // flex value
       values = splitShorthand(val + ' 1 0');
     } else {
-      // It is a width value
+      // It is a width value (flex-basis)
       values = splitShorthand('1 1 ' + val);
     }
   }
@@ -226,15 +225,14 @@ function parseFlex(value) {
 
 function parseOverflow(value) {
   // https://www.w3.org/TR/css-overflow-3/#overflow-properties
-  const values = splitShorthand(value)
-
   // The overflow property is a shorthand property that sets the specified values of overflow-x
   // and overflow-y in that order. If the second value is omitted, it is copied from the first.
-  if (values.length === 1) {
-    return { overflowX: values[0], overflowY: values[0] }
-  }
+  const [overflowX, overflowY = overflowX] = splitShorthand(value)
 
-  return { overflowX: values[0], overflowY: values[1] }
+  return {
+    overflowX,
+    overflowY
+  }
 }
 
 function parseGap(value) {
