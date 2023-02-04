@@ -655,6 +655,24 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand padding/margin correctly 12`] = `
+Object {
+  "scrollMarginBottom": "5px",
+  "scrollMarginLeft": "10px",
+  "scrollMarginRight": "20px",
+  "scrollMarginTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 13`] = `
+Object {
+  "scrollPaddingBottom": "5px",
+  "scrollPaddingLeft": "10px",
+  "scrollPaddingRight": "20px",
+  "scrollPaddingTop": "15px",
+}
+`;
+
 exports[`Expanding property values should expand placeContent correctly 1`] = `
 Object {
   "alignContent": "center",

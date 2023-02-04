@@ -171,6 +171,8 @@ const circularExpand = {
   borderStyle: key => 'border' + key + 'Style',
   padding: key => 'padding' + key,
   margin: key => 'margin' + key,
+  scrollPadding: key => 'scrollPadding' + key,
+  scrollMargin: key => 'scrollMargin' + key,
 }
 
 const borderExpand = {

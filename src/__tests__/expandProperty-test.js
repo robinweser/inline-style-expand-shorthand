@@ -27,6 +27,8 @@ describe('Expanding property values', () => {
         '15px calc(1em * (2 * var(--foo))) 5px calc(10px + (var(--bar) +      4em     ))'
       )
     ).toMatchSnapshot()
+    expect(expandProperty('scrollMargin', '15px 20px 5px 10px')).toMatchSnapshot()
+    expect(expandProperty('scrollPadding', '15px 20px 5px 10px')).toMatchSnapshot()
   })
 
   it('should expand flex correctly', () => {

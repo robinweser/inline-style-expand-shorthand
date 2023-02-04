@@ -36,11 +36,11 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 - borderColor
 - borderRadius
 - padding
-- padding-inline
-- padding-block
+- paddingInline
+- paddingBlock
 - margin
-- margin-inline
-- margin-block
+- marginInline
+- marginBlock
 - outline
 - flex
 - flexFlow
@@ -52,6 +52,8 @@ This also comes with some downsides: We make a lot of consumptions about the CSS
 - placeSelf
 - transition
 - inset
+- scroll-margin
+- scroll-padding
 
 > Need more? Feel free to [create an issue](https://github.com/rofrischmann/inline-style-expand-shorthand/issues/new) with a proposal!
 
