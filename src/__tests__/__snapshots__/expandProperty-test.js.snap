@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 1`] = `
+Object {
+  "paddingInlineEnd": "20px",
+  "paddingInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 2`] = `
+Object {
+  "paddingInlineEnd": "10px",
+  "paddingInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 3`] = `
+Object {
+  "paddingBlockEnd": "20px",
+  "paddingBlockStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 4`] = `
+Object {
+  "paddingBlockEnd": "10px",
+  "paddingBlockStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 5`] = `
+Object {
+  "marginInlineEnd": "20px",
+  "marginInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 6`] = `
+Object {
+  "marginInlineEnd": "10px",
+  "marginInlineStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 7`] = `
+Object {
+  "marginBlockEnd": "20px",
+  "marginBlockStart": "10px",
+}
+`;
+
+exports[`Expanding property values should expand {padding/margin}-{inline/block} correctly 8`] = `
+Object {
+  "marginBlockEnd": "10px",
+  "marginBlockStart": "10px",
+}
+`;
+
 exports[`Expanding property values should expand border-radius correctly 1`] = `
 Object {
   "borderBottomLeftRadius": "1px",
@@ -384,6 +440,44 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand flexFlow correctly 1`] = `
+Object {
+  "flexDirection": "column",
+  "flexWrap": "nowrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 2`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 3`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 4`] = `
+Object {
+  "flexDirection": "row",
+  "flexWrap": "wrap",
+}
+`;
+
+exports[`Expanding property values should expand flexFlow correctly 5`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 6`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 7`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 8`] = `Object {}`;
+
+exports[`Expanding property values should expand flexFlow correctly 9`] = `Object {}`;
+
 exports[`Expanding property values should expand gap correctly 1`] = `
 Object {
   "columnGap": "20px",
@@ -409,6 +503,42 @@ exports[`Expanding property values should expand gap correctly 4`] = `
 Object {
   "columnGap": "unset",
   "rowGap": "unset",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 1`] = `
+Object {
+  "bottom": "12px",
+  "left": "12px",
+  "right": "12px",
+  "top": "12px",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 2`] = `
+Object {
+  "bottom": "12px",
+  "left": "24px",
+  "right": "24px",
+  "top": "12px",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 3`] = `
+Object {
+  "bottom": "48px",
+  "left": "24px",
+  "right": "24px",
+  "top": "12px",
+}
+`;
+
+exports[`Expanding property values should expand inset correctly 4`] = `
+Object {
+  "bottom": "48px",
+  "left": "72px",
+  "right": "24px",
+  "top": "12px",
 }
 `;
 
@@ -525,6 +655,75 @@ Object {
 }
 `;
 
+exports[`Expanding property values should expand padding/margin correctly 12`] = `
+Object {
+  "scrollMarginBottom": "5px",
+  "scrollMarginLeft": "10px",
+  "scrollMarginRight": "20px",
+  "scrollMarginTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand padding/margin correctly 13`] = `
+Object {
+  "scrollPaddingBottom": "5px",
+  "scrollPaddingLeft": "10px",
+  "scrollPaddingRight": "20px",
+  "scrollPaddingTop": "15px",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 1`] = `
+Object {
+  "alignContent": "center",
+  "justifyContent": "center",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 2`] = `
+Object {
+  "alignContent": "center",
+  "justifyContent": "start",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 3`] = `
+Object {
+  "alignContent": "baseline",
+  "justifyContent": "start",
+}
+`;
+
+exports[`Expanding property values should expand placeContent correctly 4`] = `Object {}`;
+
+exports[`Expanding property values should expand placeItems correctly 1`] = `
+Object {
+  "alignItems": "center",
+  "justifyItems": "center",
+}
+`;
+
+exports[`Expanding property values should expand placeItems correctly 2`] = `
+Object {
+  "alignItems": "auto",
+  "justifyItems": "center",
+}
+`;
+
+exports[`Expanding property values should expand placeSelf correctly 1`] = `
+Object {
+  "alignItems": "start",
+  "justifyItems": "start",
+}
+`;
+
+exports[`Expanding property values should expand placeSelf correctly 2`] = `
+Object {
+  "alignItems": "end",
+  "justifyItems": "start",
+}
+`;
+
 exports[`Expanding property values should expand text-decoration correctly 1`] = `
 Object {
   "textDecorationLine": "none",
@@ -545,8 +744,79 @@ Object {
 
 exports[`Expanding property values should expand text-decoration correctly 4`] = `
 Object {
-  "textDecorationColor": "underline",
-  "textDecorationLine": "navy",
+  "textDecorationColor": "navy",
+  "textDecorationLine": "underline",
   "textDecorationStyle": "dotted",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 5`] = `
+Object {
+  "textDecorationColor": "currentColor",
+  "textDecorationLine": "overline underline",
+  "textDecorationStyle": "solid",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 6`] = `
+Object {
+  "textDecorationColor": "red",
+  "textDecorationLine": "underline",
+  "textDecorationStyle": "solid",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 7`] = `
+Object {
+  "textDecorationColor": "red",
+  "textDecorationLine": "underline",
+  "textDecorationStyle": "wavy",
+}
+`;
+
+exports[`Expanding property values should expand text-decoration correctly 8`] = `Object {}`;
+
+exports[`Expanding property values should expand transition correctly 1`] = `
+Object {
+  "transitionDelay": "initial",
+  "transitionDuration": "initial",
+  "transitionProperty": "initial",
+  "transitionTimingFunction": "initial",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 2`] = `
+Object {
+  "transitionDelay": "0s",
+  "transitionDuration": "2s",
+  "transitionProperty": "margin",
+  "transitionTimingFunction": "ease",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 3`] = `
+Object {
+  "transitionDelay": "1s",
+  "transitionDuration": "2s",
+  "transitionProperty": "margin",
+  "transitionTimingFunction": "ease",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 4`] = `
+Object {
+  "transitionDelay": "1s",
+  "transitionDuration": "2s",
+  "transitionProperty": "margin",
+  "transitionTimingFunction": "ease-in",
+}
+`;
+
+exports[`Expanding property values should expand transition correctly 5`] = `
+Object {
+  "transitionDelay": "0s, 0s",
+  "transitionDuration": "4s, 1s",
+  "transitionProperty": "margin-right, color",
+  "transitionTimingFunction": "ease, ease",
 }
 `;
